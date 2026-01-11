@@ -1,8 +1,8 @@
-import { Phone, Mail, MapPin, Instagram, Facebook, Twitter, Linkedin } from 'lucide-react';
-import { FadeIn, StaggerContainer, StaggerItem } from '@/lib/animations';
+import { Phone, Mail, MapPin, Instagram, Facebook, Twitter, Linkedin } from "lucide-react"
+import { FadeIn, StaggerContainer, StaggerItem } from "@/lib/animations"
 
 const Footer = () => {
-  const currentYear = new Date().getFullYear();
+  const currentYear = new Date().getFullYear()
 
   return (
     <footer id="contact" className="bg-secondary text-secondary-foreground">
@@ -12,13 +12,10 @@ const Footer = () => {
           <StaggerItem>
             <div className="mb-6">
               <span className="font-serif text-2xl font-bold text-cream">Klinkara</span>
-              <span className="text-gold text-sm font-medium tracking-widest uppercase ml-2">
-                Luxury PG
-              </span>
+              <span className="text-gold text-sm font-medium tracking-widest uppercase ml-2">Luxury PG</span>
             </div>
             <p className="text-cream/70 mb-6 leading-relaxed">
-              Experience premium living with world-class amenities and a vibrant 
-              community in the heart of Bangalore.
+              Experience premium living with world-class amenities and a vibrant community in the heart of Bangalore.
             </p>
             <div className="flex gap-4">
               {[Instagram, Facebook, Twitter, Linkedin].map((Icon, index) => (
@@ -37,10 +34,10 @@ const Footer = () => {
           <StaggerItem>
             <h4 className="font-serif text-lg font-semibold text-cream mb-6">Quick Links</h4>
             <ul className="space-y-3">
-              {['Home', 'Rooms', 'Amenities', 'Gallery', 'Location', 'Book Visit'].map((link) => (
+              {["Home", "Rooms", "Amenities", "Gallery", "Location", "Book Visit"].map((link) => (
                 <li key={link}>
                   <a
-                    href={`#${link.toLowerCase().replace(' ', '')}`}
+                    href={`#${link.toLowerCase().replace(" ", "")}`}
                     className="text-cream/70 hover:text-gold transition-colors"
                   >
                     {link}
@@ -68,7 +65,9 @@ const Footer = () => {
               <li className="flex items-start gap-3">
                 <MapPin className="w-5 h-5 text-gold shrink-0 mt-0.5" />
                 <span className="text-cream/70">
-                  123 MG Road, Koramangala,<br />Bangalore - 560034
+                  456 MG Road, Viman Nagar,
+                  <br />
+                  Pune - 411014
                 </span>
               </li>
               <li className="flex items-center gap-3">
@@ -90,19 +89,23 @@ const Footer = () => {
         {/* Bottom Bar */}
         <FadeIn delay={0.4}>
           <div className="mt-12 pt-8 border-t border-cream/10 flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-cream/50 text-sm">
-              © {currentYear} Klinkara Luxury PG. All rights reserved.
-            </p>
+            <p className="text-cream/50 text-sm">© {currentYear} Klinkara Luxury PG. All rights reserved.</p>
             <div className="flex gap-6 text-sm">
-              <a href="#" className="text-cream/50 hover:text-gold transition-colors">Privacy Policy</a>
-              <a href="#" className="text-cream/50 hover:text-gold transition-colors">Terms of Service</a>
-              <a href="#" className="text-cream/50 hover:text-gold transition-colors">Refund Policy</a>
+              <a href="#" className="text-cream/50 hover:text-gold transition-colors">
+                Privacy Policy
+              </a>
+              <a href="#" className="text-cream/50 hover:text-gold transition-colors">
+                Terms of Service
+              </a>
+              <a href="#" className="text-cream/50 hover:text-gold transition-colors">
+                Refund Policy
+              </a>
             </div>
           </div>
         </FadeIn>
       </div>
     </footer>
-  );
-};
+  )
+}
 
-export default Footer;
+export default Footer
