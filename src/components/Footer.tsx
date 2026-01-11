@@ -15,7 +15,7 @@ const Footer = () => {
               <span className="text-gold text-sm font-medium tracking-widest uppercase ml-2">Luxury PG</span>
             </div>
             <p className="text-cream/70 mb-6 leading-relaxed">
-              Experience premium living with world-class amenities and a vibrant community in the heart of Bangalore.
+              Experience premium living with world-class amenities and a vibrant community in the heart of Pune.
             </p>
             <div className="flex gap-4">
               {[Instagram, Facebook, Twitter, Linkedin].map((Icon, index) => (
