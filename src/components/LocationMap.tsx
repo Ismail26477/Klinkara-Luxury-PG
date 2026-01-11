@@ -1,34 +1,32 @@
-import { useState } from 'react';
-import { Input } from '@/components/ui/input';
-import { Button } from '@/components/ui/button';
-import { MapPin, Navigation, Train, Coffee, ShoppingBag, GraduationCap } from 'lucide-react';
-import { FadeIn, StaggerContainer, StaggerItem } from '@/lib/animations';
+"use client"
+
+import { useState } from "react"
+import { Input } from "@/components/ui/input"
+import { Button } from "@/components/ui/button"
+import { MapPin, Navigation, Train, Coffee, ShoppingBag, GraduationCap } from "lucide-react"
+import { FadeIn, StaggerContainer, StaggerItem } from "@/lib/animations"
 
 const nearbyPlaces = [
-  { icon: Train, name: 'Koramangala Metro', distance: '0.5 km', time: '5 min walk' },
-  { icon: Coffee, name: 'Starbucks Coffee', distance: '200 m', time: '2 min walk' },
-  { icon: ShoppingBag, name: 'Forum Mall', distance: '1.2 km', time: '10 min walk' },
-  { icon: GraduationCap, name: 'Christ University', distance: '2 km', time: '15 min drive' },
-];
+  { icon: Train, name: "Koramangala Metro", distance: "0.5 km", time: "5 min walk" },
+  { icon: Coffee, name: "Starbucks Coffee", distance: "200 m", time: "2 min walk" },
+  { icon: ShoppingBag, name: "Forum Mall", distance: "1.2 km", time: "10 min walk" },
+  { icon: GraduationCap, name: "Christ University", distance: "2 km", time: "15 min drive" },
+]
 
 const LocationMap = () => {
-  const [mapboxToken, setMapboxToken] = useState('');
-  const [showTokenInput, setShowTokenInput] = useState(true);
+  const [mapboxToken, setMapboxToken] = useState("")
+  const [showTokenInput, setShowTokenInput] = useState(true)
 
   return (
     <section id="location" className="py-24 bg-background">
       <div className="container mx-auto px-4">
         {/* Section Header */}
         <FadeIn className="text-center max-w-3xl mx-auto mb-16">
-          <p className="text-primary text-sm font-medium tracking-[0.2em] uppercase mb-4">
-            Prime Location
-          </p>
-          <h2 className="font-serif text-4xl md:text-5xl font-bold text-foreground mb-6">
-            Find Us Easily
-          </h2>
+          <p className="text-primary text-sm font-medium tracking-[0.2em] uppercase mb-4">Prime Location</p>
+          <h2 className="font-serif text-4xl md:text-5xl font-bold text-foreground mb-6">Find Us Easily</h2>
           <p className="text-muted-foreground text-lg">
-            Strategically located in the heart of Koramangala, with easy access 
-            to IT parks, colleges, and lifestyle destinations.
+            Strategically located in the heart of Koramangala, with easy access to IT parks, colleges, and lifestyle
+            destinations.
           </p>
         </FadeIn>
 
@@ -54,10 +52,7 @@ const LocationMap = () => {
                         onChange={(e) => setMapboxToken(e.target.value)}
                         className="flex-1"
                       />
-                      <Button 
-                        onClick={() => mapboxToken && setShowTokenInput(false)}
-                        className="bg-primary"
-                      >
+                      <Button onClick={() => mapboxToken && setShowTokenInput(false)} className="bg-primary">
                         Load Map
                       </Button>
                     </div>
@@ -69,19 +64,17 @@ const LocationMap = () => {
                 </div>
               )}
             </div>
-            
+
             <div className="flex items-center justify-between mt-4 p-4 bg-cream-dark rounded-xl">
               <div className="flex items-center gap-3">
                 <MapPin className="w-5 h-5 text-primary" />
-                <span className="text-foreground font-medium">
-                  123 MG Road, Koramangala, Bangalore - 560034
-                </span>
+                <span className="text-foreground font-medium">456 MG Road, Viman Nagar, Pune - 411014</span>
               </div>
-              <Button 
-                variant="outline" 
+              <Button
+                variant="outline"
                 size="sm"
-                className="border-primary text-primary hover:bg-primary hover:text-primary-foreground"
-                onClick={() => window.open('https://maps.google.com/?q=Koramangala+Bangalore', '_blank')}
+                className="border-primary text-primary hover:bg-primary hover:text-primary-foreground bg-transparent"
+                onClick={() => window.open("https://maps.google.com/?q=Viman+Nagar+Pune", "_blank")}
               >
                 <Navigation className="w-4 h-4 mr-2" />
                 Get Directions
@@ -92,9 +85,7 @@ const LocationMap = () => {
           {/* Nearby Places */}
           <FadeIn direction="right" delay={0.2}>
             <div className="bg-cream-dark rounded-2xl p-6">
-              <h3 className="font-serif text-xl font-bold text-foreground mb-6">
-                What's Nearby
-              </h3>
+              <h3 className="font-serif text-xl font-bold text-foreground mb-6">What's Nearby</h3>
               <StaggerContainer className="space-y-4">
                 {nearbyPlaces.map((place, index) => (
                   <StaggerItem key={index}>
@@ -106,25 +97,21 @@ const LocationMap = () => {
                         <p className="font-medium text-foreground">{place.name}</p>
                         <p className="text-sm text-muted-foreground">{place.time}</p>
                       </div>
-                      <span className="text-sm font-medium text-primary">
-                        {place.distance}
-                      </span>
+                      <span className="text-sm font-medium text-primary">{place.distance}</span>
                     </div>
                   </StaggerItem>
                 ))}
               </StaggerContainer>
 
               <div className="mt-6 p-4 bg-gradient-gold rounded-xl text-center">
-                <p className="text-secondary font-medium">
-                  🚗 Free pickup from metro station for site visits
-                </p>
+                <p className="text-secondary font-medium">🚗 Free pickup from metro station for site visits</p>
               </div>
             </div>
           </FadeIn>
         </div>
       </div>
     </section>
-  );
-};
+  )
+}
 
-export default LocationMap;
+export default LocationMap
