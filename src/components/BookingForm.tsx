@@ -1,34 +1,38 @@
-import { useState } from 'react';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
-import { Textarea } from '@/components/ui/textarea';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { Calendar } from '@/components/ui/calendar';
-import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
-import { Card, CardContent } from '@/components/ui/card';
-import { CalendarIcon, Phone, Mail, MapPin, Clock, Check } from 'lucide-react';
-import { format } from 'date-fns';
-import { toast } from 'sonner';
-import { FadeIn, ScaleIn } from '@/lib/animations';
-import { motion } from 'framer-motion';
+"use client"
+
+import type React from "react"
+
+import { useState } from "react"
+import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
+import { Textarea } from "@/components/ui/textarea"
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
+import { Calendar } from "@/components/ui/calendar"
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover"
+import { Card, CardContent } from "@/components/ui/card"
+import { CalendarIcon, Phone, Mail, MapPin, Clock, Check } from "lucide-react"
+import { format } from "date-fns"
+import { toast } from "sonner"
+import { FadeIn, ScaleIn } from "@/lib/animations"
+import { motion } from "framer-motion"
 
 const BookingForm = () => {
-  const [date, setDate] = useState<Date>();
-  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [date, setDate] = useState<Date>()
+  const [isSubmitted, setIsSubmitted] = useState(false)
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    roomType: '',
-    message: '',
-  });
+    name: "",
+    email: "",
+    phone: "",
+    roomType: "",
+    message: "",
+  })
 
   const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitted(true);
-    toast.success('Site visit scheduled successfully! We\'ll contact you shortly.');
-  };
+    e.preventDefault()
+    setIsSubmitted(true)
+    toast.success("Site visit scheduled successfully! We'll contact you shortly.")
+  }
 
   if (isSubmitted) {
     return (
@@ -37,22 +41,20 @@ const BookingForm = () => {
           <ScaleIn>
             <Card className="max-w-2xl mx-auto bg-card border-0 shadow-elevated">
               <CardContent className="p-12 text-center">
-                <motion.div 
+                <motion.div
                   className="w-20 h-20 bg-gradient-gold rounded-full flex items-center justify-center mx-auto mb-6"
                   initial={{ scale: 0 }}
                   animate={{ scale: 1 }}
-                  transition={{ type: 'spring', stiffness: 200, damping: 15 }}
+                  transition={{ type: "spring", stiffness: 200, damping: 15 }}
                 >
                   <Check className="w-10 h-10 text-secondary" />
                 </motion.div>
-                <h3 className="font-serif text-3xl font-bold text-foreground mb-4">
-                  Visit Scheduled!
-                </h3>
+                <h3 className="font-serif text-3xl font-bold text-foreground mb-4">Visit Scheduled!</h3>
                 <p className="text-muted-foreground text-lg mb-6">
-                  Thank you for your interest in Klinkara Luxury PG. Our team will contact 
-                  you within 24 hours to confirm your visit.
+                  Thank you for your interest in Klinkara Luxury PG. Our team will contact you within 24 hours to
+                  confirm your visit.
                 </p>
-                <Button 
+                <Button
                   onClick={() => setIsSubmitted(false)}
                   className="bg-gradient-gold hover:opacity-90 text-secondary"
                 >
@@ -63,7 +65,7 @@ const BookingForm = () => {
           </ScaleIn>
         </div>
       </section>
-    );
+    )
   }
 
   return (
@@ -74,12 +76,8 @@ const BookingForm = () => {
           <FadeIn direction="left">
             <Card className="bg-card border-0 shadow-elevated">
               <CardContent className="p-8">
-                <h3 className="font-serif text-3xl font-bold text-foreground mb-2">
-                  Book a Site Visit
-                </h3>
-                <p className="text-muted-foreground mb-8">
-                  Schedule a tour and experience luxury living firsthand.
-                </p>
+                <h3 className="font-serif text-3xl font-bold text-foreground mb-2">Book a Site Visit</h3>
+                <p className="text-muted-foreground mb-8">Schedule a tour and experience luxury living firsthand.</p>
 
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div className="grid sm:grid-cols-2 gap-4">
@@ -139,10 +137,10 @@ const BookingForm = () => {
                         <PopoverTrigger asChild>
                           <Button
                             variant="outline"
-                            className="w-full justify-start text-left font-normal"
+                            className="w-full justify-start text-left font-normal bg-transparent"
                           >
                             <CalendarIcon className="mr-2 h-4 w-4" />
-                            {date ? format(date, 'PPP') : 'Pick a date'}
+                            {date ? format(date, "PPP") : "Pick a date"}
                           </Button>
                         </PopoverTrigger>
                         <PopoverContent className="w-auto p-0" align="start">
@@ -169,8 +167,8 @@ const BookingForm = () => {
                     />
                   </div>
 
-                  <Button 
-                    type="submit" 
+                  <Button
+                    type="submit"
                     className="w-full bg-gradient-gold hover:opacity-90 text-secondary font-semibold py-6 text-lg shadow-gold"
                   >
                     Schedule My Visit
@@ -184,41 +182,47 @@ const BookingForm = () => {
           <FadeIn direction="right" delay={0.2}>
             <div className="text-cream space-y-8">
               <div>
-                <p className="text-gold-light text-sm font-medium tracking-[0.2em] uppercase mb-4">
-                  Get In Touch
-                </p>
+                <p className="text-gold-light text-sm font-medium tracking-[0.2em] uppercase mb-4">Get In Touch</p>
                 <h2 className="font-serif text-4xl md:text-5xl font-bold mb-6">
-                  We'd Love to<br />
+                  We'd Love to
+                  <br />
                   <span className="text-gradient-gold">Hear From You</span>
                 </h2>
                 <p className="text-cream/80 text-lg">
-                  Have questions about our PG? Our team is here to help you 
-                  find your perfect home.
+                  Have questions about our PG? Our team is here to help you find your perfect home.
                 </p>
               </div>
 
-              <motion.div 
+              <motion.div
                 className="space-y-6"
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true }}
                 variants={{
                   hidden: {},
-                  visible: { transition: { staggerChildren: 0.15 } }
+                  visible: { transition: { staggerChildren: 0.15 } },
                 }}
               >
                 {[
-                  { icon: Phone, title: 'Call Us', lines: ['+91 98765 43210', '+91 87654 32109'] },
-                  { icon: Mail, title: 'Email Us', lines: ['info@klinkarapg.com', 'booking@klinkarapg.com'] },
-                  { icon: MapPin, title: 'Visit Us', lines: ['Klinkara Luxury PG, 123 MG Road,', 'Koramangala, Bangalore - 560034'] },
-                  { icon: Clock, title: 'Visiting Hours', lines: ['Mon - Sat: 9:00 AM - 7:00 PM', 'Sunday: 10:00 AM - 5:00 PM'] },
+                  { icon: Phone, title: "Call Us", lines: ["+91 98765 43210", "+91 87654 32109"] },
+                  { icon: Mail, title: "Email Us", lines: ["info@klinkarapg.com", "booking@klinkarapg.com"] },
+                  {
+                    icon: MapPin,
+                    title: "Visit Us",
+                    lines: ["Klinkara Luxury PG, 456 MG Road,", "Viman Nagar, Pune - 411014"],
+                  },
+                  {
+                    icon: Clock,
+                    title: "Visiting Hours",
+                    lines: ["Mon - Sat: 9:00 AM - 7:00 PM", "Sunday: 10:00 AM - 5:00 PM"],
+                  },
                 ].map((item, index) => (
-                  <motion.div 
+                  <motion.div
                     key={index}
                     className="flex items-start gap-4"
                     variants={{
                       hidden: { opacity: 0, x: 30 },
-                      visible: { opacity: 1, x: 0 }
+                      visible: { opacity: 1, x: 0 },
                     }}
                   >
                     <div className="w-12 h-12 bg-gradient-gold rounded-xl flex items-center justify-center flex-shrink-0">
@@ -227,7 +231,9 @@ const BookingForm = () => {
                     <div>
                       <p className="font-medium text-cream">{item.title}</p>
                       {item.lines.map((line, i) => (
-                        <p key={i} className="text-cream/70">{line}</p>
+                        <p key={i} className="text-cream/70">
+                          {line}
+                        </p>
                       ))}
                     </div>
                   </motion.div>
@@ -238,7 +244,7 @@ const BookingForm = () => {
         </div>
       </div>
     </section>
-  );
-};
+  )
+}
 
-export default BookingForm;
+export default BookingForm
